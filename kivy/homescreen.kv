@@ -1,0 +1,80 @@
+<MyButton@HoverButton>:
+    background_color: 0, 0, 0, 0.5
+    font_size:20
+<HomeScreen>:
+    nauka : nauka
+    wyjscie: wyjscie
+    ustawienia: ustawienia
+    flag:flag
+
+    FloatLayout:
+
+        canvas.before:
+            Color:
+                rgb: 1, 1, 1
+            Rectangle:
+                source: 'images/wallpaper_start.jpg'
+                pos: self.pos
+                size: self.size
+        ImageButton:
+            name: 'flag'
+            id:flag
+            pos_hint: {"x":0, "y":0.1}
+            size_hint: .1, .1
+            source:'images/Group 34.png'
+            on_release:
+
+                app.set_store(False) if app.pl else app.set_store(True)
+
+
+
+                print("change")
+
+
+
+
+        GridLayout:
+            size_hint:.30, .3
+            pos_hint:{"right": 1, 'top':.4}
+            spacing: 10, 10
+            cols:1
+            MyButton:
+                text: root.study_l
+                id: nauka
+                name: 'nauka'
+                #size_hint:.20, .15
+                #pos_hint:{"right": .60, 'top':.35}
+                on_release:
+                    root.manager.transition = WipeTransition()
+                    app.set_level()
+                    app.change_screen("study_screen")
+
+
+
+            MyButton:
+                name: 'ustawienia'
+                id: ustawienia
+                text: "Ustawienia"
+                #size_hint:.20, .1
+                #pos_hint:{"right": .95, 'top':.95}
+                on_release:
+
+                    app.change_screen("home_screen")
+            MyButton:
+
+                text: "Credits"
+                #size_hint:.20, .1
+                #pos_hint:{"right": .95, 'top':.95}
+                on_release:
+                    app.change_screen("home_screen")
+            MyButton:
+                id: wyjscie
+                name: 'wyjscie'
+                text: root.exit_l
+                #size_hint:.20, .1
+                #pos_hint:{"right": .95, 'top':.95}
+                on_release:
+                    app.get_running_app().stop()
+
+
+

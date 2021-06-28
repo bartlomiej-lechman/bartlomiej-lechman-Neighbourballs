@@ -1,0 +1,23 @@
+{
+	"title": "Доповніть речення, використовуючи конструкцію \"po u...\"",
+	"string1": "Pierre jest z Francji i mówi po ",
+	"key1": "francusku",
+	"string2": "Carlos jest z Hiszpanii i mówi po ",
+	"key2": "hiszpańsku",
+	"string3": "John jest z Anglii i mówi po ",
+	"key3": "angielsku",
+	"string4": "Marta jest z Polski i mówi po ",
+	"key4": "polsku",
+	"string5": "Leonardo jest z Włoszech i mówi po ",
+	"key5": "włosku",
+	"string6": "Arnold jest z Niemiec i mówi po ",
+	"key6": "niemiecku",
+	"string7": "Felix jest ze Szwecji i mówi po ",
+	"key7": "szwedzku",
+	"string8": "Sasza jest z Ukrainy i mówi po ",
+	"key8": "ukraińsku",
+	"string9": "Mat jest z Czech i mówi po ",
+	"key9": "czesku",
+	"string10": "Sakura jest z Japonii i mówi po ",
+	"key10": "japońsku"
+}

@@ -1,0 +1,68 @@
+<ChooseLevelScreen>:
+    name: "choose_level_screen"
+    id: choose_level_screen
+    flag:flag
+    FloatLayout:
+
+        canvas.before:
+            Color:
+                rgb: 1, 1, 1
+            Rectangle:
+                source: 'images/wallpaper_level.jpg'
+                pos: self.pos
+                size: self.size
+
+        ImageButton:
+            source: 'images/back_arrow.png'
+            pos_hint: {"x":0, "y":0.85}
+            size_hint: .1, .1
+            on_release:
+                app.change_screen("study_screen")
+        #ImageButton:
+            #source: 'images/info_icon.png'
+            #pos_hint: {"x":0.9, "y":0.85}
+            #size_hint: .1, .1
+
+
+
+        GridLayout:
+            cols:4
+            pos_hint: {"x":0, "y":0.25}
+            size_hint_y: .5
+            ImageButton:
+                source: 'images/level_0.png'
+            ImageButton:
+                source: 'images/level_1.png'
+                on_release:
+
+                    app.change_screen('a1')
+            ImageButton:
+                source: 'images/level_a2.png'
+                on_release:
+
+                    app.change_screen('a2')
+            ImageButton:
+                source: 'images/right_arrow.png'
+                size_hint: .2, .2
+                on_release:
+                    app.change_screen('choose_level_screen2')
+                    root.manager.transition = WipeTransition()
+
+
+
+        GridLayout:
+            cols:1
+            pos_hint: {"x":0, "y":0.1}
+            size_hint: .1, .1
+
+            ImageButton:
+                name:'flag'
+                id: flag
+                source: 'images/Group 34.png'
+                on_release:
+                    app.set_store(False) if app.pl else app.set_store(True)
+        Image:
+            pos_hint: {"center_x":0.5, "y":0}
+            size_hint: .3, .3
+            source: 'images/navigation1.png'
+

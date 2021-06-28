@@ -1,0 +1,156 @@
+<FlashcardStartScreen>
+    flag:flag
+    name: "flashcardstart_screen"
+    id: flashcardstart_screen
+    FloatLayout:
+        size: self.parent.size  # important!
+        pos: self.parent.pos  # important!
+        canvas.before:
+            Color:
+                rgb: 1, 1, 1
+            Rectangle:
+                source: 'images/wallpaper_flashcards.jpg'
+                pos: self.pos
+                size: self.size
+        ImageButton:
+            source: 'images/back_arrow.png'
+            pos_hint: {"x":0, "y":0.85}
+            size_hint: .1, .1
+            on_release:
+                app.change_screen("home_screen")
+        ImageButton:
+            source: 'images/info_icon.png'
+            pos_hint: {"x":0.9, "y":0.85}
+            size_hint: .1, .1
+            on_release:
+                root.show_info()
+        RoundedButton:
+            text: 'Start'
+            size_hint: 0.6, 0.3
+            font_size:'60sp'
+            bold:True
+            pos_hint:{'center_x': 0.5, 'center_y': .5}
+            on_release:
+                root.start()
+                #app.change_screen('flashcard_screen')
+
+
+        GridLayout:
+            cols:1
+            pos_hint: {"x":0, "y":0.1}
+            size_hint: .1, .1
+
+            ImageButton:
+                name: 'flag'
+                id:flag
+                source: 'images/Group 34.png'
+                on_release:
+                    app.set_store(False) if app.pl else app.set_store(True)
+
+
+<RoundedButton>
+    background_normal: ''
+    background_color: 0,0,0,0
+    #canvas.before:
+        #Color:
+            #rgba: self.btn_color
+            #rgba: 0.25, 0.5, 0.5, 1
+
+        #RoundedRectangle:
+            #size: self.size
+            #pos: self.pos
+            #radius: [30]
+<CustomBoxLayout>
+    label_1: label_1
+    label_2: label_2
+    baza_slow: baza_slow
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgb: 0.2, 0.3, 0.4, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        font_name: 'Georgia'
+        font_size: '30sp'
+        id:label_1
+        name: 'label_1'
+
+    Label:
+        name: 'baza_slow'
+        id: baza_slow
+    Label:
+        id:label_2
+        name:'label_2'
+
+
+<FlashcardScreen>
+    name: "flashcard_screen"
+    id: flashcard_screen
+    question: question
+    answer: answer
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgb: 1, 1, 1
+            Rectangle:
+                source: 'images/wallpaper_flashcards.jpg'
+                pos: self.pos
+                size: self.size
+        ImageButton:
+            source: 'images/back_arrow.png'
+            pos_hint: {"x":0, "y":0.85}
+            size_hint: .1, .1
+            on_release:
+                app.change_screen("study_screen")
+        ImageButton:
+            source: 'images/info_icon.png'
+            pos_hint: {"x":0.9, "y":0.85}
+            size_hint: .1, .1
+            on_release:
+                root.show_info()
+        BoxLayout:
+            spacing: 20
+            pos_hint: {"x":0.3, "y":0.4}
+            size_hint: .4, .4
+            orientation: 'vertical'
+            Button:
+                background_normal: ''
+                background_color: 1, 0.6, 0.25, 1
+                name:'question'
+                id: question
+
+
+            RoundedButton:
+                text: 'Sprawdz slowko'
+                name: 'answer'
+                id: answer
+                on_release:
+                    root.updateAnsLabel()
+
+        GridLayout:
+            spacing:10
+            cols:2
+            pos_hint: { "x":0.35,"y":0.1}
+            size_hint: .3, .3
+            ImageButton:
+                source: 'images/trudne_icon.png'
+                on_release:
+                    root.updatecard()
+
+
+            ImageButton:
+                source: 'images/latwe_icon.png'
+                on_release:
+                    root.updatecard()
+
+        GridLayout:
+            cols:1
+            pos_hint: {"x":0, "y":0.1}
+            size_hint: .1, .1
+
+            ImageButton:
+                source: 'images/Group 34.png'
+                on_release:
+                    app.set_store(False) if app.pl else app.set_store(True)

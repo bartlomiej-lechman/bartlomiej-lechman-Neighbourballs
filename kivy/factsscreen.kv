@@ -1,0 +1,85 @@
+<FactsScreen>
+    flag:flag
+    facts_list:facts_list
+    grid:grid
+    description_l:description_l
+
+    FloatLayout:
+
+        canvas.before:
+            Color:
+                rgb: 1, 1, 1
+            Rectangle:
+                source: 'images/wallpaper_facts.jpg'
+                pos: self.pos
+                size: self.size
+        ImageButton:
+            size_hint: .1, .1
+            pos_hint: {"x":0, "y":0.85}
+            source: 'images/back_arrow.png'
+            on_release:
+                app.change_screen("home_screen")
+        Image:
+            source:"images/ball_facts.png"
+            size_hint: .3, .3
+            pos_hint: {"x":0.15, "y":0.45}
+        DescriptionLabel:
+            name: 'description_l'
+            id:description_l
+            size_hint: .3, .3
+            pos_hint: {"x":0.15, "y":0.15}
+            font_size:'24sp'
+        MyScrollView:
+            id: facts_list
+            name:'facts_list'
+            size_hint: .3, .8
+            pos_hint: {"x":0.6, "y":0.1}
+            do_scroll_x: False
+            do_scroll_y: True
+            GridLayout:
+                id: grid
+                name:'grid'
+                cols: 2
+                size_hint_y: None
+                spacing: 20
+                padding: 20
+                height: self.minimum_height
+
+
+        ImageButton:
+            name: 'flag'
+            id:flag
+            pos_hint: {"x":0, "y":0.1}
+            size_hint: .1, .1
+            source: 'images/Group 34.png'
+            on_release:
+                app.set_store(False) if app.pl else app.set_store(True)
+<DescriptionLabel@Label>
+    canvas.before:
+        Color:
+            rgb: 0.2, 0.3, 0.4, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius:[30]
+<MyScrollView@ScrollView>
+    canvas.before:
+        Color:
+            rgb: 0.99, 0.98, 0.7, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius:[30]
+<FactLayout@StackLayout>
+    #fact_content:fact_content
+    #layout:layout
+    canvas.before:
+        Color:
+            rgb: 1,1,1
+        Rectangle:
+            source:'images/wallpaper_fact.png'
+            pos: self.pos
+            size: self.size
+
+
+

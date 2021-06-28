@@ -1,0 +1,75 @@
+<MyButton@HoverButton>:
+    background_color: 0, 0, 0, 0.5
+    font_size:20
+<StudyScreen>:
+    flag:flag
+    tasks: tasks
+    flashcards:flashcards
+    interesting:interesting
+    achievements:achievements
+    FloatLayout:
+
+        canvas.before:
+            Color:
+                rgb: 1, 1, 1
+            Rectangle:
+                source: 'images/wallpaper_start.jpg'
+                pos: self.pos
+                size: self.size
+
+        ImageButton:
+            size_hint: .1, .1
+            pos_hint: {"x":0, "y":0.85}
+            source: 'images/back_arrow.png'
+            on_release:
+                app.change_screen("home_screen")
+        ImageButton:
+            name: 'flag'
+            id:flag
+            pos_hint: {"x":0, "y":0.1}
+            size_hint: .1, .1
+            source: 'images/Group 34.png'
+            on_release:
+                app.set_store(False) if app.pl else app.set_store(True)
+        GridLayout:
+            size_hint:.30, .3
+            pos_hint:{"right": 1, 'top':.4}
+            spacing: 10, 10
+            cols:1
+            MyButton:
+                name: 'tasks'
+                id: tasks
+                text: root.tasks_l
+                #size_hint:.20, .15
+                #pos_hint:{"right": .60, 'top':.35}
+                on_release:
+
+                    app.change_screen("choose_level_screen")
+            MyButton:
+                name: 'flashcards'
+                id: flashcards
+                text: root.flashcards_l
+                #size_hint:.20, .1
+                #pos_hint:{"right": .95, 'top':.95}
+                on_release:
+                    app.change_screen("flashcardstart_screen")
+                    print('change screen')
+            MyButton:
+                name: 'interesting'
+                id: interesting
+                text: root.interesting_l
+                #size_hint:.20, .1
+                #pos_hint:{"right": .95, 'top':.95}
+                on_release:
+                    app.change_screen("facts_screen")
+            MyButton:
+                name: 'achievements'
+                id: achievements
+                text: root.achievements_l
+                #size_hint:.20, .1
+                #pos_hint:{"right": .95, 'top':.95}
+                on_release:
+                    app.change_screen("achievement_screen")
+
+
+

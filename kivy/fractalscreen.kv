@@ -1,0 +1,30 @@
+<FractalScreen>
+    fractal:fractal
+
+    FloatLayout:
+        padding:10
+
+        canvas.before:
+            Color:
+                rgb: 1, 1, 1
+
+        #ImageButton:
+            #source: 'images/back_arrow.png'
+            #pos_hint: {"x":0, "y":0.85}
+            #size_hint: .1, .1
+            #on_release:
+                #app.change_screen("achievement_screen")
+
+        GridLayout:
+            name: 'grid'
+            id: grid
+            cols:2
+            rows:1
+            Image:
+                id:fractal
+                name:"fractal"
+                size_hint: 1, 1
+                source:'images/fractal.png'
+            Image:
+                source: 'images/fractal_info.png'
+                size_hint: .1, .1

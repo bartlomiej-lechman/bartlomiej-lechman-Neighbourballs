@@ -1,0 +1,119 @@
+#:include kivy/homescreen.kv
+#:include kivy/factsscreen.kv
+#:include kivy/taskspanelscreen.kv
+#:include kivy/settingsscreen.kv
+#:include kivy/chooselevelscreen.kv
+#:include kivy/chooselevelscreen2.kv
+#:include kivy/choosetaskscreen.kv
+#:include kivy/studyscreen.kv
+#:include kivy/flashcardscreen.kv
+#:include kivy/fractalscreen.kv
+#:include kivy/achievementsscreen.kv
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+#:import WipeTransition kivy.uix.screenmanager.WipeTransition
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+
+
+GridLayout:
+    cols: 1
+    ScreenManager:
+        id:screen_manager
+        HomeScreen:
+            name: "home_screen"
+            id: home_screen
+        StudyScreen:
+            name: "study_screen"
+            id: study_screen
+        SettingsScreen:
+            name:"settings_screen"
+            id: settings_screen
+        ChooseLevelScreen:
+            name: "choose_level_screen"
+            id: choose_level_screen
+        ChooseLevelScreen2:
+            name: "choose_level_screen2"
+            id: choose_level_screen2
+        ChooseTaskScreen:
+            name: "choose_task_screen"
+            id: choose_task_screen
+        FlashcardStartScreen:
+            name: "flashcardstart_screen"
+            id: flashcardstart_screen
+        FlashcardScreen:
+            name: "flashcard_screen"
+            id: flashcard_screen
+        FactsScreen:
+            name:"facts_screen"
+            id:facts_screen
+        FractalScreen:
+            name:"fractal_screen"
+            id:fractal_screen
+        AchievementScreen:
+            name: "achievement_screen"
+            id: achievement_screen
+        #TasksPanelScreen:
+            #name: "taskpanel_screen"
+            #id: taskpanel_screen
+<PopupLayout>
+    image:image
+    grid:grid
+    orientation: 'vertical'
+    canvas.before:
+
+        Color:
+            rgb: 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        id:image
+        name:'image'
+    GridLayout:
+        rows:1
+        id:grid
+        name:'grid'
+<CanvasBoxLayout>
+    canvas.before:
+
+        Color:
+            rgb: 0.25, 0.5, 0.5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+<InfoPopup>
+
+    canvas.before:
+
+        Color:
+            rgb: 1,1,1
+        Rectangle:
+            source:root.image
+            pos: self.pos
+            size: self.size
+<Vocabulary>
+    text:text
+    size_hint_y: None
+    height: self.minimum_height
+    padding:100
+    canvas.before:
+        Color:
+            rgb: 1,1,1
+        Rectangle:
+
+            pos: self.pos
+            size: self.size
+    Label:
+        name:'text'
+        id: text
+        font_size: 16
+        text_size: self.width, None
+        size_hint_y: None
+        height: self.texture_size[1]
+        color: 0,0,0,1
+
+
+
+
+
+

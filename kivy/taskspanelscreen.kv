@@ -1,0 +1,110 @@
+#:include kivy/flashcardscreen.kv
+<TasksPanelScreen>:
+    grid:grid
+    flag:flag
+    FloatLayout:
+
+        canvas.before:
+            Color:
+                rgb: 1, 1, 1
+            Rectangle:
+                source: 'images/wallpaper_tasks.png'
+                pos: self.pos
+                size: self.size
+        ImageButton:
+            name: 'flag'
+            id:flag
+            pos_hint: {"x":0, "y":0.1}
+            size_hint: .1, .1
+            source: 'images/Group 34.png'
+            on_release:
+                app.set_store(False) if app.pl else app.set_store(True)
+        Image:
+            pos_hint: {"center_x":0.5, "y":0}
+            size_hint: .3, .3
+            source: 'images/topic_button.png'
+
+
+
+
+        ImageButton:
+
+            pos_hint: {"x":0.9, "y":0.1}
+            size_hint: .1, .1
+            source: 'images/book_icon.png'
+            on_release:
+                root.show_book()
+
+        ImageButton:
+            source: 'images/back_arrow.png'
+            pos_hint: {"x":0, "y":0.85}
+            size_hint: .1, .1
+            on_release:
+                app.change_screen("study_screen")
+        ImageButton:
+            source: 'images/info_icon.png'
+            pos_hint: {"x":0.9, "y":0.85}
+            size_hint: .1, .1
+            on_release:
+                root.show_info()
+        GridLayout:
+            name: 'grid'
+            id: grid
+            cols:5
+            rows:3
+            pos_hint: {"x":0, "y":0.25}
+            size_hint_y: .55
+            spacing:20
+<TaskScreen>
+    task_l:task_l
+    layout:layout
+    title:title
+    #grid:grid
+
+    FloatLayout:
+        name: 'layout'
+        id:layout
+
+        canvas.before:
+            Color:
+                rgb: 1, 1, 1
+            Rectangle:
+                source: 'images/task.jpg'
+                pos: self.pos
+                size: self.size
+        ImageButton:
+            size_hint: .1, .1
+            pos_hint: {"x":0, "y":0.85}
+            source: 'images/back_arrow.png'
+            on_release:
+                app.change_screen("a1")
+        Label:
+            name: 'task_l'
+            id:task_l
+            pos_hint: {"center_x":0.5, "y":0.45}
+            font_size: '30sp'
+        Label:
+            name: 'title'
+            id: title
+            pos_hint: {"center_x":0.5, "y":0.37}
+            font_size: '18sp'
+            color: 1,0,1,1
+            text: 'title'
+
+
+
+
+
+        RoundedButton:
+            text: 'Zatwierdz'
+            size_hint: 0.1, 0.1
+            pos_hint:{'x': 0.75, 'y': 0.05}
+            on_release:
+                root.check_answers()
+
+
+
+
+
+
+
